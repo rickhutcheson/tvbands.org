@@ -1,7 +1,0 @@
-RewriteEngine  on
-
-
-RewriteRule ^(.*)ablevins(.*)$ http://tvbands.org/misc/moved.html [L]
-
-RewriteCond %{REQUEST_URI} !^/old-url/ablevins/?$
-RewriteRule ^(.*)$ http://tvbands.org/misc/gone.html [L]
