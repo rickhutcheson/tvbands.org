@@ -22,244 +22,277 @@
    -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>
-			Tri-Valley Bands
-		</title>
-		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"><!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+    <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+	    Tri-Valley Bands
+	</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!--[if lt IE 9]>
+	    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
 
-		<style type="text/css">
-		html {
-			font-size: 100%;
-		}
-		body {
-			 background: #222;
-			 color: white;
-			 font-family: 'Open Sans';
-		 }
-		 .header-strip {
-			 color: black;
-			 background: #e4c203;
-			 padding: 0.25rem 0;
-			 position: relative;
-		 }
-		 .header-wrapper {
-			 justify-content: center;
-			 align-items: center;
-			 display: flex;
-		 }
+	<style type="text/css">
+	 html {
+	     font-size: 100%;
+	 }
+	 body {
+	     background: #222;
+	     color: white;
+	     font-family: 'Open Sans';
+	 }
+	 .header-strip {
+	     color: black;
+	     background: #e4c203;
+	     padding: 0.25rem 0;
+	     position: relative;
+	 }
+	 .header-wrapper {
+	     justify-content: center;
+	     align-items: center;
+	     display: flex;
+	 }
 
-		 .menu-icon {
-			 flex: 1;
-			 height: auto;
-		     line-height: 0;
-			 font-size: 1.5rem;
-		 }
+	 .menu-icon {
+             cursor: pointer;
+	     flex: 1;
+	     height: auto;
+	     line-height: 0;
+	     font-size: 1.5rem;
+	 }
 
-		 .logo {
-			 background-size: contain;
-			 font-size: 2rem;
-			 font-weight: 900;
-			 letter-spacing: -2px;
-			 width: 100%;
-		 }
+	 .logo {
+	     background-size: contain;
+	     font-size: 2rem;
+	     font-weight: 900;
+	     letter-spacing: -2px;
+	     width: 100%;
+	 }
 
-		 .menu-wrapper {
-			 background: #e4c203;
-			 display: none; /* click handler overrides */
-			 left: 0;
-			 position: absolute;
-			 right: 0;
-			 top: 3.5rem; /* height of header-strip */
-			 width: 100%;
-			 z-index: 10;
-		 }
-		 .menu {
-		 	 display: flex;
-		 	 flex-direction: column;
-			 font-size: 1.25rem;
-			 font-weight: 300;
-			 justify-content: space-between;
-			 list-style: none;
-			 padding: 0;
-			 color: black;
-		 }
+	 .menu-wrapper {
+	     background: #e4c203;
+	     display: none; /* click handler overrides */
+	     left: 0;
+	     position: absolute;
+	     right: 0;
+	     top: 3.5rem; /* height of header-strip */
+	     width: 100%;
+	     z-index: 10;
+	 }
+	 .menu {
+	     display: flex;
+	     flex-direction: column;
+	     font-size: 1.25rem;
+	     font-weight: 300;
+	     justify-content: space-between;
+	     list-style: none;
+	     padding: 0;
+	     color: black;
+	 }
 
-		 .menu__item {
-		 	 flex: 1 0 auto;
-			 display: block;
-			 padding: 0.75rem 0;
-			 position: relative;
-		 }
+	 .menu__item {
+	     flex: 1 0 auto;
+	     display: block;
+	     padding: 0.75rem 0;
+	     position: relative;
+	 }
 
-		 .menu__item::after {
-			 display: block;
-			 border: 0;
-			 bottom: 1px; /* keeps lines exactly between items */
-			 box-shadow: 0 1px 1px -1px rgba(0,0,0,0.5);
-			 content: ' ';
-			 height: 5px;
-			 left: -15px; /* container padding */
-			 position: absolute;
-			 right: -15px;  /* container padding */
-		 }
+	 .menu__item::after {
+	     display: block;
+	     border: 0;
+	     bottom: 1px; /* keeps lines exactly between items */
+	     box-shadow: 0 1px 1px -1px rgba(0,0,0,0.5);
+	     content: ' ';
+	     height: 5px;
+	     left: -15px; /* container padding */
+	     position: absolute;
+	     right: -15px;  /* container padding */
+	 }
 
-		 .menu__link {
-			 border: solid 1px #e4c203;
-			 color: black;
-		 }
+	 .menu__link {
+	     border: solid 1px #e4c203;
+	     color: black;
+	 }
 
-		 @media (min-width: 700px) {
-		 .director-info {
-			 display: block;
-			 flex: 3 1 auto;
-		 }
-		 .header-strip {
-			 padding: 1em 0;
-		 }
-			 .header-wrapper {
-				 justify-content: flex-start;
-			 }
-			 .logo {
-				 width: auto;
-				 flex: 1 1 auto;
-			 }
-			 .menu-icon {
-				 display: none;
-			 }
-			 .menu-wrapper {
-				 position: static;
-				 display: block !important;
-			 }
-			 .menu {
-				 flex-direction: row;
-				 padding-top: 1em;
-			 }
-			 .menu__item {
-				 font-size: 0.8rem;
-				 font-weight: 400;
-				 letter-spacing: -0.5px;
-				 margin: 0;
-				 padding: 0;
-			 }
-			 .menu__item::after {
-				 display: none;
-			 }
+         .content-wrapper {
+             margin-top: 1rem;
+         }
 
-		 }
+         .entry__header {
+             padding-bottom: 1rem;  /* same as margin-top of content-wrapper */
+             border-bottom: solid .2rem #e4c203;
+         }
 
-		 /* Content */
-		 h2 {
-		 	color: #e4c203;
-		 	font-size: 1.5rem;
-		 	font-weight: 700;
-		 	letter-spacing: -0.05rem;
-		 }
+         .sidebar__section-header {
+             font-size: 0.85rem;
+             font-weight: 700;
+         }
 
-		</style>
-	</head>
-	<body>
-		<div class="header-strip">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="header-wrapper">
-							<div class="logo">
-								Tri-Valley Bands
-							</div>
-							<div class="menu-icon" id="menu-icon">
-								<i class="glyphicon glyphicon-menu-hamburger"></i>
-							</div>
-						</div>
-						<!-- header-flex-container-->
-					</div>
-					<!-- col-xs-12 -->
-				</div> <!-- row -->
-			</div> <!-- container -->
+         .sidebar__section-body {
+             font-size: 0.75rem;
+         }
 
-			<div class="menu-wrapper"  id="top-menu">
-				<div class="container">
-					<div class="row">
-					<div class="col-xs-12 col-lg-9">
-						<nav class="menu">
-							<div class="menu__item">
-								<a class="menu__link" href="#">Home</a>
-							</div>
+	 @media (min-width: 700px) {
+	     .director-info {
+		 display: block;
+		 flex: 3 1 auto;
+	     }
+	     .header-strip {
+		 padding: 1em 0;
+	     }
+	     .header-wrapper {
+		 justify-content: flex-start;
+	     }
+	     .logo {
+		 width: auto;
+		 flex: 1 1 auto;
+	     }
+	     .menu-icon {
+		 display: none;
+	     }
+	     .menu-wrapper {
+		 position: static;
+		 display: block !important;
+	     }
+	     .menu {
+		 flex-direction: row;
+		 padding-top: 1em;
+	     }
+	     .menu__item {
+		 font-size: 0.8rem;
+		 font-weight: 400;
+		 letter-spacing: -0.5px;
+		 margin: 0;
+		 padding: 0;
+	     }
+	     .menu__item::after {
+		 display: none;
+	     }
 
-							<div class="menu__item">
-								<a class="menu__link" href="#">Handbook &amp; Forms</a>
-							</div>
+	 }
 
-							<div class="menu__item">
-								<a class="menu__link" href="#">Bands &amp; Guard</a>
-							</div>
+	 /* Content */
+	 h2, h3, h4, h5, h6 {
+	     color: #e4c203;
+             margin: 0;
+             margin-bottom: 1em;
+	 }
 
-							<div class="menu__item">
-								<a class="menu__link" href="#">Events</a>
-							</div>
+         h2 {
+             font-size: 1.5rem;
+	     font-weight: 700;
+	     letter-spacing: -0.025rem;
+         }
 
-							<div class="menu__item">
-								<a class="menu__link" href="#">Alumni / Contact</a>
-							</div>
-
-							<div class="menu__item">
-								<a class="menu__link" href="#">Band Boosters</a>
-							</div>
-
-							<div class="menu__item">
-								<a class="menu__link" href="#">Links</a>
-							</div>
-
-							<div class="menu__item">
-								<a class="menu__link" href="#">Current Fundraisers</a>
-							</div>
-						</nav>
-						<!-- menu-flex-container -->
-					</div>
-					<!-- col-xs-12 -->
-				</div>
-				</div>
-				<!-- row -->
-
+	</style>
+    </head>
+    <body>
+	<div class="header-strip">
+	    <div class="container">
+		<div class="row">
+		    <div class="col-xs-12">
+			<div class="header-wrapper">
+			    <div class="logo">
+				Tri-Valley Bands
+			    </div>
+			    <div class="menu-icon" id="menu-icon">
+				<i class="glyphicon glyphicon-menu-hamburger"></i>
+			    </div>
 			</div>
-		</div>
-		<!-- container -->
-		<!-- header-wrapper -->
+			<!-- header-flex-container-->
+		    </div>
+		    <!-- col-xs-12 -->
+		</div> <!-- row -->
+	    </div> <!-- container -->
 
-		<div class="content-wrapper">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-md-9">
-						<div class="content">
-							<div class="entry">
-								<h2>
-									Welcome
-								</h2>
-
-								<p class="entry__body">
-									This site is devoted entirely to Tri-Valley's variety of bands and the talented members that play in each one. No matter what your style of music you'll find that Tri-Valley has a band to fit everyone's interests. The members of these bands work very hard to bring together the songs that are played at the contest, games and other activities. If it weren't for these active and devoted members our events would not be nearly as enjoyable as they are! Tri-Valley thanks the participation of these budding musicians.
-								</p>
-							</div>
-						</div>
-					</div>
+	    <div class="menu-wrapper"  id="top-menu">
+		<div class="container">
+		    <div class="row">
+			<div class="col-xs-12 col-lg-9">
+			    <nav class="menu">
+				<div class="menu__item">
+				    <a class="menu__link" href="#">Home</a>
 				</div>
+
+				<div class="menu__item">
+				    <a class="menu__link" href="#">Handbook &amp; Forms</a>
+				</div>
+
+				<div class="menu__item">
+				    <a class="menu__link" href="#">Bands &amp; Guard</a>
+				</div>
+
+				<div class="menu__item">
+				    <a class="menu__link" href="#">Events</a>
+				</div>
+
+				<div class="menu__item">
+				    <a class="menu__link" href="#">Alumni / Contact</a>
+				</div>
+
+				<div class="menu__item">
+				    <a class="menu__link" href="#">Band Boosters</a>
+				</div>
+
+				<div class="menu__item">
+				    <a class="menu__link" href="#">Links</a>
+				</div>
+
+				<div class="menu__item">
+				    <a class="menu__link" href="#">Current Fundraisers</a>
+				</div>
+			    </nav>
+			    <!-- menu-flex-container -->
 			</div>
+			<!-- col-xs-12 -->
+		    </div>
 		</div>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="js/jquery/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-		$('#menu-icon').on('click', function() {
-		     $('#top-menu').slideToggle(300);
-		});
-		</script>
-</script>
-	</body>
+		<!-- row -->
+
+	    </div>
+	</div>
+	<!-- container -->
+	<!-- header-wrapper -->
+
+	<div class="content-wrapper">
+	    <div class="container">
+		<div class="row">
+		    <div class="col-xs-12 col-md-9">
+			<div class="content">
+			    <div class="entry">
+				<h2 class="entry__header">
+				    Upcoming Events
+				</h2>
+				<p class="entry__body">
+				</p>
+			    </div>
+			</div>
+		    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="sidebar">
+                            <div class="sidebar__section">
+                                <h3 class="sidebar__section-header">About the Band</h3>
+                                <p class="sidebar__section-body">
+                                    This site is devoted entirely to Tri-Valley's variety of bands and the talented members that play in each one. No matter what your style of music you'll find that Tri-Valley has a band to fit everyone's interests. The members of these bands work very hard to bring together the songs that are played at the contest, games and other activities. If it weren't for these active and devoted members our events would not be nearly as enjoyable as they are! Tri-Valley thanks the participation of these budding musicians.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+		</div>
+	    </div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	 $('#menu-icon').on('click', function() {
+	     $('#top-menu').slideToggle(300);
+	 });
+	</script>
+                                                                                </script>
+    </body>
 </html>
