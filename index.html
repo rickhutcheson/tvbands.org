@@ -1,25 +1,3 @@
-<!--
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ***********************   https://coderwall.com/  **********************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-     ************************************************************************
-   -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
     <head>
@@ -30,6 +8,7 @@
 	    Tri-Valley Bands
 	</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!--[if lt IE 9]>
 	    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -40,15 +19,16 @@
 	     font-size: 100%;
 	 }
 	 body {
-	     background: #222;
-	     color: white;
+	     background: #fafafa;
+	     color: #222;
 	     font-family: 'Open Sans';
 	 }
 	 .header-strip {
 	     color: black;
-	     background: #e4c203;
+	     background: #f7c608;
 	     padding: 0.25rem 0;
 	     position: relative;
+             box-shadow: 0px .1rem 0.3rem rgba(100, 100, 100, 0.49);
 	 }
 	 .header-wrapper {
 	     justify-content: center;
@@ -73,12 +53,12 @@
 	 }
 
 	 .menu-wrapper {
-	     background: #e4c203;
+	     background: #f7c608;
 	     display: none; /* click handler overrides */
 	     left: 0;
 	     position: absolute;
 	     right: 0;
-	     top: 3.5rem; /* height of header-strip */
+	     top: 3.25rem; /* height of header-strip */
 	     width: 100%;
 	     z-index: 10;
 	 }
@@ -113,17 +93,23 @@
 	 }
 
 	 .menu__link {
-	     border: solid 1px #e4c203;
-	     color: black;
+	     color: #222;
 	 }
 
-         .content-wrapper {
-             margin-top: 1rem;
+         .menu__link:hover {
+	     border-bottom: solid 1px #222;
+             color: #222;
+             text-decoration: none;
          }
 
-         .entry__header {
-             padding-bottom: 1rem;  /* same as margin-top of content-wrapper */
-             border-bottom: solid .2rem #e4c203;
+         .content-wrapper {
+             margin-top: 3rem;
+         }
+
+         .section__header {
+             font-family: "Open Sans Condensed";
+             text-transform: uppercase;
+             font-weight: bold;
          }
 
          .sidebar__section-header {
@@ -135,7 +121,32 @@
              font-size: 0.75rem;
          }
 
-	 @media (min-width: 700px) {
+         .section__entry {
+             align-items: center;
+             border-top: solid 1px #f7c608;
+             display: flex;
+             justify-content: space-between;
+             padding: 0.5rem 0;
+         }
+
+         .section__entry:last-child {
+             border-bottom: solid 1rem #f7c608;
+         }
+
+         .section__entry-details {
+             display: flex;
+             flex-direction: column;
+         }
+         .section__entry-title {
+             font-size: 0.85rem;
+             font-weight: 700;
+         }
+         .section__entry-detail {
+             margin-right: 0.5rem;
+             font-size: 0.7rem;
+         }
+
+	 @media (min-width: 992px) {
 	     .director-info {
 		 display: block;
 		 flex: 3 1 auto;
@@ -176,15 +187,13 @@
 
 	 /* Content */
 	 h2, h3, h4, h5, h6 {
-	     color: #e4c203;
              margin: 0;
              margin-bottom: 1em;
 	 }
 
          h2 {
-             font-size: 1.5rem;
+             font-size: 1.25rem;
 	     font-weight: 700;
-	     letter-spacing: -0.025rem;
          }
 
 	</style>
@@ -199,7 +208,7 @@
 				Tri-Valley Bands
 			    </div>
 			    <div class="menu-icon" id="menu-icon">
-				<i class="glyphicon glyphicon-menu-hamburger"></i>
+				<i class="fa fa-bars"></i>
 			    </div>
 			</div>
 			<!-- header-flex-container-->
@@ -262,12 +271,51 @@
 		<div class="row">
 		    <div class="col-xs-12 col-md-9">
 			<div class="content">
-			    <div class="entry">
-				<h2 class="entry__header">
+			    <div class="section">
+				<h2 class="section__header">
 				    Upcoming Events
 				</h2>
-				<p class="entry__body">
-				</p>
+				<div class="section__body">
+                                    <div class="section__entry">
+                                        <div class="section__entry-title">
+                                            Lancaster Contest
+                                        </div>
+                                        <div class="section__entry-details">
+                                            <div class="section__entry-detail">
+                                                07 Mar
+                                            </div>
+                                            <div class="section__entry-detail">
+                                                Lancaster OH
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="section__entry">
+                                        <div class="section__entry-title">
+                                            Lancaster Contest
+                                        </div>
+                                        <div class="section__entry-details">
+                                            <div class="section__entry-detail">
+                                                07 Mar
+                                            </div>
+                                            <div class="section__entry-detail">
+                                                Lancaster OH
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="section__entry">
+                                        <div class="section__entry-title">
+                                            Lancaster Contest
+                                        </div>
+                                        <div class="section__entry-details">
+                                            <div class="section__entry-detail">
+                                                07 Mar
+                                            </div>
+                                            <div class="section__entry-detail">
+                                                Lancaster OH
+                                            </div>
+                                        </div>
+                                    </div>
+				</div>
 			    </div>
 			</div>
 		    </div>
@@ -284,10 +332,12 @@
 		</div>
 	    </div>
 	</div>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- Dependencies for Bootstrap's js plugins -->
 	<script src="js/jquery/jquery.min.js"></script>
+        <script src="js/tether/tether.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
+
 	<script type="text/javascript">
 	 $('#menu-icon').on('click', function() {
 	     $('#top-menu').slideToggle(300);
