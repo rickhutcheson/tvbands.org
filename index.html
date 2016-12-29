@@ -25,10 +25,10 @@
 	 }
 	 .header-strip {
 	     color: black;
-	     background: #f7c608;
+	     background: rgba(247, 198, 8, 1);
 	     padding: 0.25rem 0;
 	     position: relative;
-             box-shadow: 0px .1rem 0.3rem rgba(100, 100, 100, 0.49);
+             box-shadow: 0px .1rem 0.4rem rgba(100, 100, 100, 0.8);
 	 }
 	 .header-wrapper {
 	     justify-content: center;
@@ -53,7 +53,7 @@
 	 }
 
 	 .menu-wrapper {
-	     background: #f7c608;
+	     background: rgba(247, 198, 8, 1);
 	     display: none; /* click handler overrides */
 	     left: 0;
 	     position: absolute;
@@ -106,10 +106,20 @@
              margin-top: 3rem;
          }
 
+         .section {
+             margin-top: 3rem;
+         }
+
+         .section:first-child {
+             margin-top: 0;
+         }
+
          .section__header {
+             color: rgba(34, 34, 34, 0.6);
              font-family: "Open Sans Condensed";
-             text-transform: uppercase;
              font-weight: bold;
+             margin-bottom: 0.5rem;
+             text-transform: uppercase;
          }
 
          .sidebar__section-header {
@@ -123,14 +133,14 @@
 
          .section__entry {
              align-items: center;
-             border-top: solid 1px #f7c608;
+             border-top: solid 1px rgba(34, 34, 34, 0.15);
              display: flex;
              justify-content: space-between;
-             padding: 0.5rem 0;
+             padding: 0.25rem 0;
          }
 
          .section__entry:last-child {
-             border-bottom: solid 1rem #f7c608;
+             border-bottom: solid 1px rgba(34, 34, 34, 0.15);
          }
 
          .section__entry-details {
@@ -138,8 +148,8 @@
              flex-direction: column;
          }
          .section__entry-title {
-             font-size: 0.85rem;
-             font-weight: 700;
+             font-size: 0.8rem;
+             font-weight: 500;
          }
          .section__entry-detail {
              margin-right: 0.5rem;
@@ -202,7 +212,7 @@
 	<div class="header-strip">
 	    <div class="container">
 		<div class="row">
-		    <div class="col-xs-12">
+		    <div class="col-xs-12 col-lg-3">
 			<div class="header-wrapper">
 			    <div class="logo">
 				Tri-Valley Bands
@@ -274,6 +284,52 @@
 			    <div class="section">
 				<h2 class="section__header">
 				    Upcoming Events
+				</h2>
+				<div class="section__body">
+                                    <div class="section__entry">
+                                        <div class="section__entry-title">
+                                            Lancaster Contest
+                                        </div>
+                                        <div class="section__entry-details">
+                                            <div class="section__entry-detail">
+                                                07 Mar
+                                            </div>
+                                            <div class="section__entry-detail">
+                                                Lancaster OH
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="section__entry">
+                                        <div class="section__entry-title">
+                                            Lancaster Contest
+                                        </div>
+                                        <div class="section__entry-details">
+                                            <div class="section__entry-detail">
+                                                07 Mar
+                                            </div>
+                                            <div class="section__entry-detail">
+                                                Lancaster OH
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="section__entry">
+                                        <div class="section__entry-title">
+                                            Lancaster Contest
+                                        </div>
+                                        <div class="section__entry-details">
+                                            <div class="section__entry-detail">
+                                                07 Mar
+                                            </div>
+                                            <div class="section__entry-detail">
+                                                Lancaster OH
+                                            </div>
+                                        </div>
+                                    </div>
+				</div>
+			    </div>
+			    <div class="section">
+				<h2 class="section__header">
+				    Recent News
 				</h2>
 				<div class="section__body">
                                     <div class="section__entry">
