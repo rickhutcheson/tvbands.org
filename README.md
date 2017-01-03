@@ -2,4 +2,5 @@
 
 ## Prerequisites
 
-* PHP >= 5.6 compiled with OpenSSL, SQLite, and the mbstring extensions
+* Any *nix-like system (for running Makefiles)
+* PHP installation satisfying [Bolt's requirements](https://docs.bolt.cm/3.2/getting-started/requirements)
