@@ -5,7 +5,7 @@
 	    Upcoming Events
 	</h2>
 	<div class="section__body">
-            {% setcontent upcoming = 'events' where { date: '>today' } %}
+            {% setcontent upcoming = 'events' where { date: '>today' } limit 5 %}
             {% for event in upcoming %}
                 <div class="section__entry">
                     <div class="section__entry-title">
@@ -16,9 +16,6 @@
                     <div class="section__entry-details">
                         <div class="section__entry-detail">
                             {{ event.date|localedatetime("%B %e") }}
-                        </div>
-                        <div class="section__entry-detail">
-                            Lancaster OH
                         </div>
                     </div>
                 </div>
@@ -31,46 +28,22 @@
 	<h2 class="section__header">
 	    Recent News
 	</h2>
-	<div class="section__body">
+        {% setcontent news = 'news/latest/5' %}
+        {% for news_item in news %}
             <div class="section__entry">
                 <div class="section__entry-title">
-                    Lancaster Contest
+                    <a class="section__entry-link" href="{{ news_item.link }}">
+                        {{ news_item.title }}
+                    </a>
                 </div>
                 <div class="section__entry-details">
                     <div class="section__entry-detail">
-                        07 Mar
-                    </div>
-                    <div class="section__entry-detail">
-                        Lancaster OH
+                        {{ news_item.publishdate|localedatetime("%B %e") }}
                     </div>
                 </div>
             </div>
-            <div class="section__entry">
-                <div class="section__entry-title">
-                    Lancaster Contest
-                </div>
-                <div class="section__entry-details">
-                    <div class="section__entry-detail">
-                        07 Mar
-                    </div>
-                    <div class="section__entry-detail">
-                        Lancaster OH
-                    </div>
-                </div>
-            </div>
-            <div class="section__entry">
-                <div class="section__entry-title">
-                    Lancaster Contest
-                </div>
-                <div class="section__entry-details">
-                    <div class="section__entry-detail">
-                        07 Mar
-                    </div>
-                    <div class="section__entry-detail">
-                        Lancaster OH
-                    </div>
-                </div>
-            </div>
-	</div>
+{% else %}
+            <p>No recent news.</p>
+        {% endfor %}
     </div>
 {% endblock %}

@@ -80,6 +80,28 @@ events:
             order: -id
 
 
+
+#
+# News
+#
+news:
+  name: News
+  singular_name: News
+  description: "Announcements or information that isn't specific to an event. Examples: 'Congratulations to the Tri-Valley Marching Band!', 'Thanks to Uniform Sponsers', etc."
+  default_status: published
+  fields:
+    title:
+        type: text
+        class: large
+        group: content
+        required: true
+    body:
+        type: html
+        height: 300px
+    slug:
+        type: slug
+        uses: title
+
 # Pages can be used for the more 'static' pages on your site. Things like
 # 'about us', 'contact' or a 'disclaimer'. This content-type has a 'templateselect'
 # field, which allows you to override the record_template setting for an
