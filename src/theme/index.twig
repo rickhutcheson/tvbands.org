@@ -9,9 +9,16 @@
             {% for event in upcoming %}
                 <div class="section__entry">
                     <div class="section__entry-title">
-                        <a class="section__entry-link" href="{{ event.link }}">
-                            {{ event.name }}
-                        </a>
+                        {# Only link to detail page if there is a location #}
+                        {% if event.related('locations') | first %}
+                            <a class="section__entry-link" href="{{ event.link }}">
+                                {{ event.name }}
+                            </a>
+                        {% else %}
+                            <a class="section__entry-link" href="{{ event.itinerary }}">
+                                {{ event.name }}
+                            </a>
+                        {% endif %}
                     </div>
                     <div class="section__entry-details">
                         <div class="section__entry-detail">
@@ -23,27 +30,31 @@
                 <p>No upcoming events.</p>
             {% endfor %}
 	</div>
+        <a href="{{ path('contentlisting', {'contenttypeslug': 'events'}) }}">All Events</a>
     </div>
     <div class="section">
 	<h2 class="section__header">
 	    Recent News
 	</h2>
-        {% setcontent news = 'news/latest/5' %}
-        {% for news_item in news %}
-            <div class="section__entry">
-                <div class="section__entry-title">
-                    <a class="section__entry-link" href="{{ news_item.link }}">
-                        {{ news_item.title }}
-                    </a>
-                </div>
-                <div class="section__entry-details">
-                    <div class="section__entry-detail">
-                        {{ news_item.publishdate|localedatetime("%B %e") }}
+        <div class="section__body">
+            {% setcontent news = 'news/latest/5' %}
+            {% for news_item in news %}
+                <div class="section__entry">
+                    <div class="section__entry-title">
+                        <a class="section__entry-link" href="{{ news_item.link }}">
+                            {{ news_item.title }}
+                        </a>
+                    </div>
+                    <div class="section__entry-details">
+                        <div class="section__entry-detail">
+                            {{ news_item.publishdate|localedatetime("%B %e") }}
+                        </div>
                     </div>
                 </div>
-            </div>
 {% else %}
-            <p>No recent news.</p>
-        {% endfor %}
+                <p>No recent news.</p>
+            {% endfor %}
+        </div>
+        <a href="{{ path('contentlisting', {'contenttypeslug': 'news'}) }}">All News</a>
     </div>
 {% endblock %}
