@@ -1,0 +1,16 @@
+{% extends 'partials/_base.twig' %}
+{% block content %}
+    <h2>Student Materials</h2>
+    {% for doc in documents %}
+        <hr>
+        <h3><a href="{{ doc.file }}">{{ doc.title }}</a></h3>
+        <p>{{ doc.description }}</p>
+        {% else %}
+        <h2>No content found.</h2>
+        <p>
+            Unfortunately, no content could be found.
+            Try another page, or go to the <a href={{ path('homepage') }}>homepage</a>.
+        </p>
+    {% endfor %}
+
+{% endblock %}

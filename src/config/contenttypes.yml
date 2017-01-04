@@ -11,6 +11,7 @@ documents:
     slug: documents
     singular_slug: document
     description: "Student documents include the handbook, forms, and other materials useful for students to download"
+    default_status: published
     fields:
         name:
             type: text
@@ -25,9 +26,10 @@ documents:
 #
 # Event Locations
 #
+
 locations:
-    name: Locations
-    singular_name: Location
+    name: Event Locations
+    singular_name: Event Location
     fields:
         name:
             type: text
