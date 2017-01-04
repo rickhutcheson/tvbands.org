@@ -4,14 +4,16 @@ main:
       class: first
     - label: Handbook & Forms
       path: documents/
+    - label: Events
+      path: events/
+    - label: Current Fundraisers
+      path: fundraisers/
     - label: Ensembles
       path: ensembles/
     - label: Alumni / Contact
       path: pages/alumni
     - label: Band Boosters
       path: pages/boosters/
-    - label: Current Fundraisers
-      path: fundraisers/
     - label: Musical Links
       path: links/
       class: last

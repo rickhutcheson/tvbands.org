@@ -29,8 +29,8 @@ dev-setup: setup/bin/composer.phar
 		&& ../setup/bin/composer.phar run-script post-install-cmd
 	cp src/setup/dev_server.php srv/public/
 	cp src/setup/public_index.php srv/public/index.php
-	cd srv/app && rm -r config && ln -s ../../src/config config
-	cd srv/public/theme && rm -r theme/tvbands && ln -s ../../../src/theme theme/tvbands
+	cd srv/app && rm -rf config && ln -s ../../src/config config
+	cd srv/public && rm -rf theme/tvbands && ln -s ../../../src/theme theme/tvbands
 
 dev-server:
 	php -S localhost:8000 -t srv/public/ srv/public/dev_server.php

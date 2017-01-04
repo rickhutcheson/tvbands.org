@@ -11,6 +11,8 @@ theme: tvbands
 locale: en_US
 timezone: US/Eastern
 
+third_party:
+  google_maps_key: "AIzaSyCLGcxVzp7AdIwML6zlzyIKo-avAILtnik"
 # Set maintenance mode on or off.
 #
 # While in maintenance mode, only users of level editor or higher can access the
