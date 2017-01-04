@@ -5,45 +5,26 @@
 	    Upcoming Events
 	</h2>
 	<div class="section__body">
-            <div class="section__entry">
-                <div class="section__entry-title">
-                    Lancaster Contest
-                </div>
-                <div class="section__entry-details">
-                    <div class="section__entry-detail">
-                        07 Mar
+            {% setcontent upcoming = 'events' where { date: '>today' } %}
+            {% for event in upcoming %}
+                <div class="section__entry">
+                    <div class="section__entry-title">
+                        <a class="section__entry-link" href="{{ event.link }}">
+                            {{ event.name }}
+                        </a>
                     </div>
-                    <div class="section__entry-detail">
-                        Lancaster OH
-                    </div>
-                </div>
-            </div>
-            <div class="section__entry">
-                <div class="section__entry-title">
-                    Lancaster Contest
-                </div>
-                <div class="section__entry-details">
-                    <div class="section__entry-detail">
-                        07 Mar
-                    </div>
-                    <div class="section__entry-detail">
-                        Lancaster OH
+                    <div class="section__entry-details">
+                        <div class="section__entry-detail">
+                            {{ event.date|localedatetime("%B %e") }}
+                        </div>
+                        <div class="section__entry-detail">
+                            Lancaster OH
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="section__entry">
-                <div class="section__entry-title">
-                    Lancaster Contest
-                </div>
-                <div class="section__entry-details">
-                    <div class="section__entry-detail">
-                        07 Mar
-                    </div>
-                    <div class="section__entry-detail">
-                        Lancaster OH
-                    </div>
-                </div>
-            </div>
+                {% else %}
+                <p>No upcoming events.</p>
+            {% endfor %}
 	</div>
     </div>
     <div class="section">
