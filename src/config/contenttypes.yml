@@ -1,6 +1,80 @@
 # This file defines the contenttypes on the website. See the documentation for
 # details: https://docs.bolt.cm/contenttypes/intro
 
+#
+# Student Materials (Handbook, forms, calendar, etc.)
+#
+
+documents:
+    name: Student Documents
+    singular_name: asdf
+    description: "Student documents include the handbook, forms, and other materials useful for students to download"
+    fields:
+        name:
+            type: text
+            class: large
+        description:
+            type: text
+        slug:
+            type: slug
+            uses: name
+        file:
+            type: file
+#
+# Event Locations
+#
+locations:
+    name: Locations
+    singular_name: Location
+    fields:
+        name:
+            type: text
+            class: large
+        address:
+            type: text
+        slug:
+            type: slug
+            uses: name
+        image:
+            type: image
+        teaser:
+            type: html
+            height: 150px
+    default_status: published
+    show_on_dashboard: false
+    searchable: false
+    viewless: true
+
+
+#
+# Events
+#
+
+events:
+    name: Events
+    singular_name: Event
+    description: "TODO"
+    default_status: published
+    fields:
+        name:
+            type: text
+            group: content
+            required: yes
+        date:
+            type: date
+            group: content
+        itinerary:
+            label: 'Itinerary File'
+            type: file
+            group: content
+    relations:
+        locations:
+            group: asdf
+            multiple: false
+            label: Where is this Event? (Optional)
+            order: -id
+
+
 # Pages can be used for the more 'static' pages on your site. Things like
 # 'about us', 'contact' or a 'disclaimer'. This content-type has a 'templateselect'
 # field, which allows you to override the record_template setting for an
