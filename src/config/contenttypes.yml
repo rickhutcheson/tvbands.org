@@ -7,7 +7,9 @@
 
 documents:
     name: Student Documents
-    singular_name: asdf
+    singular_name: Student Document
+    slug: documents
+    singular_slug: document
     description: "Student documents include the handbook, forms, and other materials useful for students to download"
     fields:
         name:
