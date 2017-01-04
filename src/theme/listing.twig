@@ -1,4 +1,33 @@
 {% extends 'partials/_base.twig' %}
 {% block content %}
-    listing
+
+    {% for record in records %}
+        <article>
+
+            <h2><a href="{{ record.link }}">{{ record.title }}</a></h2>
+            {# display something introduction-like.. #}
+            {% if record.introduction %}
+                {{ record.introduction }}
+            {% elseif record.teaser %}
+                {{ record.teaser }}
+            {% else %}
+                <p>{{ record.excerpt(300, false, search|default('')) }}</p>
+            {% endif %}
+
+            {% include 'partials/_recordfooter.twig' with { 'record': record } %}
+
+        </article>
+
+        {% if not loop.last %}
+            <hr>
+        {% endif %}
+
+        {% else %}
+            <h2>No content found.</h2>
+            <p>
+                Unfortunately, no content could be found.
+                Try another page, or go to the <a href={{ path('homepage') }}>homepage</a>.
+            </p>
+    {% endfor %}
+
 {% endblock %}
