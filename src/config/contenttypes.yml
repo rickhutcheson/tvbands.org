@@ -59,6 +59,7 @@ events:
     singular_name: Event
     description: "Events such as contests, football games, or booster meetings. If you want to provide a map to the event, then add an 'Event Location' in the 'Relationships' tab."
     default_status: published
+    sort: -date
     fields:
         name:
             type: text
@@ -74,7 +75,6 @@ events:
             group: content
     relations:
         locations:
-            group: asdf
             multiple: false
             label: Where is this Event? (Optional)
             order: -id
@@ -98,6 +98,38 @@ news:
     body:
         type: html
         height: 300px
+    slug:
+        type: slug
+        uses: title
+
+#
+# Fundraisers
+#
+
+fundraisers:
+  name: Fundraisers
+  singular_name: Fundraiser
+  description: "Fundraisers have some start and end date, and can have any kind of description."
+  default_status: published
+  fields:
+    title:
+        type: text
+        class: large
+        group: content
+        required: true
+    description:
+        type: html
+        height: 300px
+    start_date:
+        type: date
+        group: content
+        required: true
+    end_date:
+        type: date
+        group: content
+        required: true
+    attachments:
+        type: filelist
     slug:
         type: slug
         uses: title

@@ -266,7 +266,7 @@ debuglog:
 # responsibility not to break the layout.
 wysiwyg:
     images: false            # Allow users to insert images in the content.
-    anchor: false            # Adds a button to create internal anchors to link to.
+    anchor: true            # Adds a button to create internal anchors to link to.
     tables: false            # Adds a button to insert and modify tables in the content.
     fontcolor: false         # Allow users to mess around with font coloring.
     align: false             # Adds buttons for 'align left', 'align right', etc.
@@ -415,9 +415,6 @@ hash_strength: 10
 #     user: usr
 #     password: pwd
 
-# Options for backend user interface
-# backend:
-#    news:
-#        disable: true     # Disable news panel. Defaults to false. "Alerts" will still be shown.
-#    stack:
-#        disable: true     # Disable stack usage. Defaults to false.
+backend:
+   news:
+       disable: true
