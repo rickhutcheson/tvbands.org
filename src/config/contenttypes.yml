@@ -5,6 +5,28 @@
 # Student Materials (Handbook, forms, calendar, etc.)
 #
 
+ensembles:
+  name: Ensembles
+  singular_name: Ensemble
+  slug: ensembles
+  singular_slug: ensemble
+  description: "Bands and other student groups (e.g. Guard or Winter Drumline)"
+  default_status: published
+  fields:
+      name:
+          type: text
+          class: large
+          required: true
+      short_description:
+          type: text
+          required: true
+      full_description:
+          type: text
+          required: true
+      slug:
+          type: slug
+          uses: name
+
 documents:
     name: Student Documents
     singular_name: Student Document
@@ -26,6 +48,7 @@ documents:
         slug:
             type: slug
             uses: name
+
 #
 # Event Locations
 #
@@ -73,6 +96,9 @@ events:
             label: 'Itinerary File'
             type: file
             group: content
+        slug:
+            type: slug
+            uses: [date, name]
     relations:
         locations:
             multiple: false
@@ -98,9 +124,10 @@ news:
     body:
         type: html
         height: 300px
+
     slug:
         type: slug
-        uses: title
+        uses: [datecreated, title]
 
 #
 # Fundraisers
@@ -132,7 +159,7 @@ fundraisers:
         type: filelist
     slug:
         type: slug
-        uses: title
+        uses: [start_date, title]
 
 # Pages can be used for the more 'static' pages on your site. Things like
 # 'about us', 'contact' or a 'disclaimer'. This content-type has a 'templateselect'
