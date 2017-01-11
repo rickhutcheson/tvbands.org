@@ -5,10 +5,25 @@
     {{ ensemble.full_description }}
 
     {# Ensemble events #}
-    {% setcontent upcoming = 'events' where { date: '>today' } limit 5 %}
-    {{ include ('partials/_event_list.twig', { list_title: 'Events', events: upcoming }) }}
+    {% if ensemble.relation.events is defined %}
+
+        {###
+        Bit of a hack here; in the case where only 1 related record is defined,
+        this strategy will result in a single record instead of an array. In order to force at least 2
+        IDs in the set, we tack on an extra "or id = 0" clause to the query.
+        ###}
+        {% set event_ids = ensemble.relation.events | join(" || ") ~ ' || 0' %}
+        {% setcontent upcoming = "events" where { id: event_ids } orderby '-date' %}
+
+        {% set events_title = "#{ensemble.name} Events" %}
+        {{ include ('partials/_event_list.twig', { list_title: events_title, events: upcoming, hide_all_link: true }) }}
+    {% endif %}
 
     {# Ensemble news #}
-    {% setcontent news = 'news/latest/5' %}
-    {{ include ('partials/_news_list.twig', { list_title: 'Recent News', news: news }) }}
+    {% if ensemble.relation.news is defined %}
+        {% set news_ids = ensemble.relation.news | join(" || ") ~ ' || 0'%} {# See above comment for info on concat'd 0 #}
+        {% setcontent news = "news" where { id: news_ids } orderby '-datecreated' %}
+        {% set news_title = "#{ensemble.name} News" %}
+        {{ include ('partials/_news_list.twig', { list_title: news_title, news: news, hide_all_link: true }) }}
+    {% endif %}
 {% endblock %}

@@ -100,12 +100,14 @@ events:
             type: slug
             uses: [date, name]
     relations:
+        ensembles:
+            multiple: true
+            label: "Which Ensemble(s)?"
+            order: -id
         locations:
             multiple: false
             label: Where is this Event? (Optional)
             order: -id
-
-
 
 #
 # News
@@ -124,10 +126,20 @@ news:
     body:
         type: html
         height: 300px
-
+        group: content
+    date:
+        type: date
+        default: 'today'
+        required: true
+        group: content
     slug:
         type: slug
-        uses: [datecreated, title]
+        uses: [title, date]
+  relations:
+    ensembles:
+      multiple: true
+      label: "Which Ensemble(s) is this news about?"
+
 
 #
 # Fundraisers
@@ -159,21 +171,16 @@ fundraisers:
         type: filelist
     slug:
         type: slug
-        uses: [start_date, title]
+        uses: [title, start_date]
 
-# Pages can be used for the more 'static' pages on your site. Things like
-# 'about us', 'contact' or a 'disclaimer'. This content-type has a 'templateselect'
-# field, which allows you to override the record_template setting for an
-# individual page.
-# The taxonomy for this contenttype is defined as 'groups', which is a so-called
-# "grouping taxonomy". This way you can easily group sets of pages that logically
-# belong together. If your site has a 'services' section, in which you'd like to
-# list the different types of services a company provides, you can group these
-# together.
+#
+# Pages
+#
 
 pages:
     name: Pages
     singular_name: Page
+    default_status: published
     fields:
         title:
             type: text
@@ -182,19 +189,9 @@ pages:
         slug:
             type: slug
             uses: title
-        image:
-            type: image
-        teaser:
-            type: html
-            height: 150px
         body:
             type: html
-            height: 300px
-        template:
-            type: templateselect
-            filter: '*.twig'
-    taxonomy: [ groups ]
-    recordsperpage: 100
+            height: 500px
 
 
 # The 'Showcases' is not particularly useful in most cases, but it does a good

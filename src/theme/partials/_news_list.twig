@@ -20,5 +20,7 @@
             <p>No recent news.</p>
         {% endfor %}
     </div>
-    <a href="{{ path('contentlisting', {'contenttypeslug': 'news'}) }}">All News</a>
+    {% if hide_all_link is not defined %}
+        <a href="{{ path('contentlisting', {'contenttypeslug': 'news'}) }}">All News</a>
+    {% endif %}
 </div>

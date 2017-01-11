@@ -23,9 +23,11 @@
                     </div>
                 </div>
             </div>
-                {% else %}
+          {% else %}
             <p>No upcoming events.</p>
         {% endfor %}
     </div>
-    <a href="{{ path('contentlisting', {'contenttypeslug': 'events'}) }}">All Events</a>
+    {% if hide_all_link is not defined %}
+        <a href="{{ path('contentlisting', {'contenttypeslug': 'events'}) }}">All Events</a>
+    {% endif %}
 </div>

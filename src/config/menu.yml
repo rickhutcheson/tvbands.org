@@ -15,5 +15,5 @@ main:
     - label: Band Boosters
       path: pages/boosters/
     - label: Musical Links
-      path: links/
+      path: page/musical-links
       class: last
