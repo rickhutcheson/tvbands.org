@@ -10,6 +10,9 @@ setup/bin/composer.phar:
 	mkdir -p setup/bin
 	mv composer.phar setup/bin
 
+db-update:
+	php srv/vendor/bolt/bolt/app/nut database:update
+
 dev-setup: setup/bin/composer.phar
 	@echo "Installing Bolt CMS..."
 	mkdir -p srv
