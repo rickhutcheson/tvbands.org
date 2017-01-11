@@ -1,7 +1,14 @@
 {% extends 'partials/_base.twig' %}
 {% block content %}
+    <h2>{{ ensemble.name }}</h2>
+    <hr>
+    {{ ensemble.full_description }}
+
+    {# Ensemble events #}
     {% setcontent upcoming = 'events' where { date: '>today' } limit 5 %}
-    {{ include ('partials/_event_list.twig', { list_title: 'Upcoming Events', events: upcoming }) }}
+    {{ include ('partials/_event_list.twig', { list_title: 'Events', events: upcoming }) }}
+
+    {# Ensemble news #}
     {% setcontent news = 'news/latest/5' %}
     {{ include ('partials/_news_list.twig', { list_title: 'Recent News', news: news }) }}
 {% endblock %}

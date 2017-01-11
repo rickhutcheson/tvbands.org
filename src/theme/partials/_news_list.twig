@@ -1,0 +1,24 @@
+<div class="section">
+    <h2 class="section__header">
+        {{ list_title }}
+    </h2>
+    <div class="section__body">
+        {% for news_item in news %}
+            <div class="section__entry">
+                <div class="section__entry-title">
+                    <a class="section__entry-link" href="{{ news_item.link }}">
+                        {{ news_item.title }}
+                    </a>
+                </div>
+                <div class="section__entry-details">
+                    <div class="section__entry-detail">
+                        {{ news_item.publishdate|localedatetime("%B %e") }}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>No recent news.</p>
+        {% endfor %}
+    </div>
+    <a href="{{ path('contentlisting', {'contenttypeslug': 'news'}) }}">All News</a>
+</div>

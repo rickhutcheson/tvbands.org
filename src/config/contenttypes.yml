@@ -21,8 +21,8 @@ ensembles:
           type: text
           required: true
       full_description:
-          type: text
-          required: true
+          type: html
+          height: 500px
       slug:
           type: slug
           uses: name
@@ -113,7 +113,7 @@ events:
 news:
   name: News
   singular_name: News
-  description: "Announcements or information that isn't specific to an event. Examples: 'Congratulations to the Tri-Valley Marching Band!', 'Thanks to Uniform Sponsers', etc."
+  description: "Announcements or information that isn't specific to an event. If you connect the announcement to an ensemble (or multiple ensembles) then it will also display on the ensemble page. Examples: 'Congratulations to the Tri-Valley Marching Band!', 'Thanks to Uniform Sponsers', etc."
   default_status: published
   fields:
     title:

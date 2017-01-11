@@ -1,0 +1,31 @@
+<div class="section">
+    <h2 class="section__header">
+        {{ list_title }}
+    </h2>
+    <div class="section__body">
+        {% for event in events %}
+            <div class="section__entry">
+                <div class="section__entry-title">
+                    {# Only link to detail page if there is a location #}
+                    {% if event.related('locations') | first %}
+                        <a class="section__entry-link" href="{{ event.link }}">
+                            {{ event.name }}
+                        </a>
+                    {% else %}
+                        <a class="section__entry-link" href="{{ event.itinerary }}">
+                            {{ event.name }}
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="section__entry-details">
+                    <div class="section__entry-detail">
+                        {{ event.date|localedatetime("%B %e") }}
+                    </div>
+                </div>
+            </div>
+                {% else %}
+            <p>No upcoming events.</p>
+        {% endfor %}
+    </div>
+    <a href="{{ path('contentlisting', {'contenttypeslug': 'events'}) }}">All Events</a>
+</div>

@@ -7,8 +7,8 @@
             {# display something introduction-like.. #}
             {% if record.introduction %}
                 {{ record.introduction }}
-            {% elseif record.teaser %}
-                {{ record.teaser }}
+            {% elseif record.short_description %}
+                {{ record.short_description }}
             {% else %}
                 <p>{{ record.excerpt(300, false, search|default('')) }}</p>
             {% endif %}
