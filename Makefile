@@ -8,7 +8,7 @@
 # Variable Setup
 #
 
-NOW := $(shell date +%s)
+NOW := $(shell date +%m-%d-%y+%H:%M:%S)
 
 #
 # Environment-Specific Setup
@@ -40,7 +40,7 @@ dev-srv-setup: base-srv-setup
 
 .PHONY: prod-srv-setup
 prod-srv-setup: base-srv-setup
-	cd $(SRV_DIR)/app && ln -s ../../../../database	 database
+	cd $(SRV_DIR)/app && ln -s ../../../../database	database
 	cd $(SRV_DIR)/public && ln -s ../../../../files files
 
 
@@ -90,6 +90,14 @@ app-setup: $(ENV)-app-setup
 dev-server:
 	php -S localhost:8000 -t $(SRV_DIR)/public/ $(SRV_DIR)/public/dev_server.php
 
+dev-pre-deploy:
+
+prod-pre-deploy:
+	cp database/bolt.db database/backup-$(NOW).db
+
+pre-deploy: $(ENV)-pre-deploy
+
+deploy: pre-deploy app-setup
 
 setup/bin/composer.phar:
 	@echo "Installing composer..."
