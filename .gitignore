@@ -1,2 +1,15 @@
-srv/
 /setup/
+
+#
+# Development files
+#
+
+/srv/
+
+#
+# Production files
+#
+
+/files/
+/database/
+/releases/

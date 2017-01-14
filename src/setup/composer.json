@@ -18,7 +18,6 @@
             "Bolt\\Composer\\ScriptHandler::installAssets"
         ],
         "post-create-project-cmd": [
-            "Bolt\\Composer\\ScriptHandler::configureProject",
             "Bolt\\Composer\\ScriptHandler::installThemesAndFiles",
             "nut extensions:setup"
         ]
