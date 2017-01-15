@@ -80,6 +80,7 @@ dev-app-setup: base-app-setup
 .PHONY: app-setup
 prod-app-setup: base-app-setup
 	cp -r src $(BASE_DIR)/
+	cd releases && rm -f current && ln -s $(NOW) current
 
 
 .PHONY: app-setup
