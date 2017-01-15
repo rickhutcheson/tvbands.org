@@ -36,8 +36,8 @@ body {
     font-size: 2.5rem;
     letter-spacing: -0.2rem;
     margin-bottom: -1rem;
-    /* Deal with Freeland's line-height */
     width: 100%;
+    z-index: 20;  /* must be higher than menu-wrapper */
 }
 
 .menu-wrapper {
@@ -220,4 +220,15 @@ h4 {
 h5 {
     font-size: 0.75rem;
     font-weight: 600;
+}
+
+
+/* Helpers */
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
