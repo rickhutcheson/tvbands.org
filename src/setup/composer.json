@@ -11,15 +11,10 @@
     "minimum-stability": "beta",
     "prefer-stable": true,
     "scripts": {
-        "post-install-cmd": [
-            "Bolt\\Composer\\ScriptHandler::installAssets"
-        ],
-        "post-update-cmd": [
-            "Bolt\\Composer\\ScriptHandler::installAssets"
-        ],
-        "post-create-project-cmd": [
+        "post-release-cmd": [
             "Bolt\\Composer\\ScriptHandler::installThemesAndFiles",
-            "nut extensions:setup"
+            "nut extensions:setup",
+            "Bolt\\Composer\\ScriptHandler::installAssets"
         ]
     }
 }

@@ -4,17 +4,20 @@
 #
 ################################################################################
 
-#
-# Variable Setup
-#
 
-NOW := $(shell date +%m-%d-%y+%H:%M:%S)
-
+########################################################################
+# Variable Setup & Configuration
 #
-# Environment-Specific Setup
-#
+# Releases on server are named (and stored) by timestamp, so we
+# calculate NOW once at the beginning so that we have consistent
+# directory names during execution.
+########################################################################
 
-# SRV_DIR
+NOW := $(shell date +%m-%d-%y+%H.%M.%S)
+
+# Variable: BASE_DIR
+# In a given environment, this directory holds all
+
 ifeq ($(ENV), dev)
 	BASE_DIR = .
 endif
@@ -25,9 +28,23 @@ endif
 SRV_DIR = $(BASE_DIR)/srv
 
 
+########################################################################
+# Runtime Checks
+#
+# Ideally, these checks would be the first code in the file, but
+# make requires these conditionals to be defined after some
+# statements or variable definitions, so we place them here.
+########################################################################
+
 ifndef ENV
 	$error("ENV must be specified.")
 endif
+
+
+########################################################################
+# Targets
+########################################################################
+
 
 .PHONY:	db-update
 db-update:
@@ -43,12 +60,11 @@ prod-srv-setup: base-srv-setup
 	cd $(SRV_DIR)/app && ln -s ../../../../database	database
 	cd $(SRV_DIR)/public && ln -s ../../../../files files
 
-
 .PHONY: base-srv-setup
 base-srv-setup:
 	@echo "Setting up server directory..."
 	mkdir -p $(SRV_DIR)
-	cp src/setup/composer.json $(SRV_DIR)/
+	cp src/setup/composer.lock $(SRV_DIR)/
 	mkdir -p $(SRV_DIR)/app/cache
 	mkdir -p $(SRV_DIR)/app/config
 	mkdir -p $(SRV_DIR)/public/theme
@@ -63,8 +79,7 @@ base-app-setup: setup/bin/composer.phar $(ENV)-srv-setup
 	@echo "Installing Bolt CMS..."
 	cd $(SRV_DIR) \
 		&& ${CURDIR}/setup/bin/composer.phar install --no-scripts \
-		&& ${CURDIR}/setup/bin/composer.phar run-script post-create-project-cmd  \
-		&& ${CURDIR}/setup/bin/composer.phar run-script post-install-cmd
+		&& ${CURDIR}/setup/bin/composer.phar run-script post-release-cmd
 
 	cd $(SRV_DIR) && rm -rf .bolt.yml && ln -s ../../src/config/base.yml .bolt.yml
 	cd $(SRV_DIR)/app && rm -rf config && ln -s ../../src/config config
@@ -80,6 +95,7 @@ dev-app-setup: base-app-setup
 .PHONY: app-setup
 prod-app-setup: base-app-setup
 	cp -r src $(BASE_DIR)/
+	cp src/setup/prod/dot-htaccess $(SRV_DIR)/public/.htaccess
 	cd releases && rm -f current && ln -s $(NOW) current
 
 
