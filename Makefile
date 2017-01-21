@@ -90,11 +90,13 @@ base-app-setup: setup/bin/composer.phar $(ENV)-srv-setup
 	cd $(SRV_DIR)/app && rm -rf config && ln -s ../../src/config config
 	cd $(SRV_DIR)/public && rm -rf theme/tvbands \
 		&& ln -s ../../../src/theme theme/tvbands
+	cp src/setup/public_index.php $(SRV_DIR)/public/index.php
+
 
 .PHONY: app-setup
 dev-app-setup: base-app-setup
 	cp src/setup/dev_server.php $(SRV_DIR)/public/
-	cp src/setup/public_index.php $(SRV_DIR)/public/index.php
+
 
 
 .PHONY: app-setup
