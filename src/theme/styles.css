@@ -109,11 +109,8 @@ body {
 }
 
 .section__header {
-    color: rgba(34, 34, 34, 0.6);
-    font-family: "Open Sans Condensed";
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
+    color: rgba(34, 34, 34, 0.8);
+    margin-bottom: 1rem;
 }
 
 .sidebar {
@@ -154,6 +151,11 @@ body {
 .section__entry-detail {
     margin-right: 0.5rem;
     font-size: 0.7rem;
+}
+
+.section__all-link {
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
 }
 
 @media (min-width: 992px) {

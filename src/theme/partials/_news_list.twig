@@ -21,6 +21,6 @@
         {% endfor %}
     </div>
     {% if hide_all_link is not defined %}
-        <a href="{{ path('contentlisting', {'contenttypeslug': 'news'}) }}">All News</a>
+        <a class="section__all-link" href="{{ path('contentlisting', {'contenttypeslug': 'news'}) }}">All News</a>
     {% endif %}
 </div>

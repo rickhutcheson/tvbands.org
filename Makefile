@@ -130,6 +130,7 @@ dev-post-setup:
 .PHONY: prod-post-setup
 prod-post-setup:
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
+	php $(SRV_DIR)/vendor/bolt/bolt/app/nut cache:clear
 
 .PHONY: post-setup
 post-setup: $(ENV)-post-setup
