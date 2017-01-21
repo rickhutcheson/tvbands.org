@@ -55,8 +55,14 @@ dev-srv-setup: base-srv-setup
 	mkdir -p $(SRV_DIR)/app/database
 	mkdir -p $(SRV_DIR)/public/files
 
+	cd $(SRV_DIR) \
+	&& ln -s ../src/setup/composer.json composer.json \
+	&& ln -s ../src/setup/composer.lock composer.lock
+
 .PHONY: prod-srv-setup
 prod-srv-setup: base-srv-setup
+	cp src/setup/composer.json $(SRV_DIR)/
+	cp src/setup/composer.lock $(SRV_DIR)/
 	cd $(SRV_DIR)/app && ln -s ../../../../database	database
 	cd $(SRV_DIR)/public && ln -s ../../../../files files
 
@@ -64,7 +70,6 @@ prod-srv-setup: base-srv-setup
 base-srv-setup:
 	@echo "Setting up server directory..."
 	mkdir -p $(SRV_DIR)
-	cp src/setup/composer.lock $(SRV_DIR)/
 	mkdir -p $(SRV_DIR)/app/cache
 	mkdir -p $(SRV_DIR)/app/config
 	mkdir -p $(SRV_DIR)/public/theme
