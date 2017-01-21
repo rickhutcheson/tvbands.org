@@ -5,9 +5,9 @@
 # Default Taxonomies
 #
 
-ensemble_type:
-    slug: ensemble-types
-    singular_slug: ensemble-types
+ensemble_types:
+    slug: ensemble_types
+    singular_slug: ensemble_type
     behaves_like: grouping
     postfix: "What kind of ensemble is this? (Band, Guard, Drumline, ...)"
     options: { band: "Band", guard: "Guard", drumline: "Drumline", other: "Other (See Ricky if you use this a lot)" }

@@ -26,6 +26,7 @@ ensembles:
       slug:
           type: slug
           uses: name
+  taxonomy: [ ensemble_types ]
 
 documents:
     name: Student Documents
