@@ -1,6 +1,6 @@
 {% extends 'partials/_base.twig' %}
 {% block content %}
-    <h2>{{ event.name }} | <a href="{{event.itinerary }}">Itinerary</a></h2>
+    <h2>{{ event.name }} | <a href="{{ asset(event.itinerary, 'files') }}">Itinerary</a></h2>
     <hr>
     <h5>{{ event.date|localedatetime('%A %B %e')}}</h5>
 
