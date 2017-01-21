@@ -4,6 +4,8 @@
 # Development files
 #
 
+# development environments need configuration overrides
+/src/config/config_local.yml
 /srv/
 
 #

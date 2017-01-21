@@ -112,6 +112,7 @@ app-setup: $(ENV)-app-setup
 
 .PHONY: dev-server
 dev-server:
+	cp src/config/config_dev.yml src/config/config_local.yml
 	php -S localhost:8000 -t $(SRV_DIR)/public/ $(SRV_DIR)/public/dev_server.php
 
 .PHONY: dev-pre-setup
