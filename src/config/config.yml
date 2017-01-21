@@ -54,9 +54,9 @@ caching:
     templates: true
     request: false
     duration: 10
-    authenticated: false
     thumbnails: true
     translations: true
+    authenticated: false
 
 changelog:
     enabled: false

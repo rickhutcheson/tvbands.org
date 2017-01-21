@@ -6,14 +6,14 @@ main:
       path: documents/
     - label: Events
       path: events/
-    - label: Current Fundraisers
+    - label: Fundraisers
       path: fundraisers/
     - label: Ensembles
       path: ensembles/
-    - label: Alumni / Contact
-      path: pages/alumni
     - label: Band Boosters
       path: pages/boosters/
     - label: Musical Links
       path: page/musical-links
+    - label: Contact
+      path: pages/contact
       class: last
