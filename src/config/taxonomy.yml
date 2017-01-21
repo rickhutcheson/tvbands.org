@@ -1,6 +1,18 @@
 # This file defines the different types of taxonomies in Bolt. See the
 # documentation for details: https://docs.bolt.cm/contenttypes/taxonomies
 
+#
+# Default Taxonomies
+#
+
+ensemble_type:
+    slug: ensemble-types
+    singular_slug: ensemble-types
+    behaves_like: grouping
+    postfix: "What kind of ensemble is this? (Band, Guard, Drumline, ...)"
+    options: { band: "Band", guard: "Guard", drumline: "Drumline", other: "Other (See Ricky if you use this a lot)" }
+    has_sortorder: true
+
 tags:
     slug: tags
     singular_slug: tag
