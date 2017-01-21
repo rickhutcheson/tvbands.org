@@ -112,14 +112,18 @@ app-setup: $(ENV)-app-setup
 dev-server:
 	php -S localhost:8000 -t $(SRV_DIR)/public/ $(SRV_DIR)/public/dev_server.php
 
-dev-pre-deploy:
+.PHONY: dev-pre-release
+dev-pre-release:
 
-prod-pre-deploy:
+.PHONY: prod-pre-release
+prod-pre-release:
 	cp database/bolt.db database/backup-$(NOW).db
 
-pre-deploy: $(ENV)-pre-deploy
+.PHONY: pre-release
+pre-release: $(ENV)-pre-release
 
-deploy: pre-deploy app-setup
+.PHONY: release
+release: pre-release app-setup
 
 setup/bin/composer.phar:
 	@echo "Installing composer..."
