@@ -22,7 +22,7 @@
     {# Ensemble news #}
     {% if ensemble.relation.news is defined %}
         {% set news_ids = ensemble.relation.news | join(" || ") ~ ' || 0'%} {# See above comment for info on concat'd 0 #}
-        {% setcontent news = "news" where { id: news_ids } orderby '-datecreated' %}
+        {% setcontent news = "news" where { id: news_ids } orderby '-date' %}
         {% set news_title = "#{ensemble.name} News" %}
         {{ include ('partials/_news_list.twig', { list_title: news_title, news: news, hide_all_link: true }) }}
     {% endif %}
