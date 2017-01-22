@@ -37,7 +37,7 @@ SRV_DIR = $(BASE_DIR)/srv
 ########################################################################
 
 ifndef ENV
-	$error("ENV must be specified.")
+    $(error ENV must be specified)
 endif
 
 

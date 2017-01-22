@@ -97,6 +97,10 @@ events:
             label: 'Itinerary File'
             type: file
             group: content
+        documents:
+            label: 'Other materials or forms'
+            type: filelist
+            group: content
         slug:
             type: slug
             uses: [date, name]
@@ -113,6 +117,7 @@ events:
 #
 # News
 #
+
 news:
   name: News
   singular_name: News
@@ -161,19 +166,33 @@ fundraisers:
     description:
         type: html
         height: 300px
-    start_date:
+    dates:
+      type: repeater
+      label: 'Fundraiser Date'
+      prefix: 'Please add the dates / times of the fundraiser. Leave time at 12:00 AM to ignore.'
+      fields:
+        datetime:
+          type: datetime
+          label: 'Date & Time'
+          required: true
+    promotion_start_date:
+        label: 'Start Promoting On'
+        postfix: 'First day to list this fundraiser under "Current Fundraisers".'
         type: date
         group: content
         required: true
-    end_date:
+    promotion_end_date:
+        label: 'Stop Promoting On'
+        postfix: 'Last day to list this fundraiser under "Current Fundraisers".'
         type: date
         group: content
         required: true
     attachments:
+        label: 'Itinerary and other documents'
         type: filelist
     slug:
         type: slug
-        uses: [title, start_date]
+        uses: [title, promotion_start_date]
 
 #
 # Pages
