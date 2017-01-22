@@ -2,6 +2,6 @@
 {% block content %}
     {% setcontent upcoming = 'events' where { date: '>today' } limit 5 %}
     {{ include ('partials/_event_list.twig', { list_title: 'Upcoming Events', events: upcoming }) }}
-    {% setcontent news = 'news/latest/5' %}
+    {% setcontent news = 'news' limit 5 orderby '-date' %}
     {{ include ('partials/_news_list.twig', { list_title: 'Recent News', news: news }) }}
 {% endblock %}
