@@ -2,7 +2,7 @@
 {% block content %}
     <h2>{{ event.name }} | <a href="{{ asset(event.itinerary, 'files') }}">Itinerary</a></h2>
     <hr>
-    <h5>{{ event.date|localedatetime('%A %B %e')}}</h5>
+    <h5>{{ event.date|localedatetime('%A, %B %e, %Y')}}</h5>
 
     {% set location = record.related('locations')|first %}
     {% if location %}

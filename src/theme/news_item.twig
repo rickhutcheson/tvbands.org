@@ -2,6 +2,6 @@
 {% block content %}
     <h2>{{ news.title }}</h2>
     <hr>
-    <h5>{{ news.date|localedatetime('%A %B %e')}}</h5>
+    <h5>{{ news.date|localedatetime('%A, %B %e, %Y')}}</h5>
     {{ news.body }}
 {% endblock %}
