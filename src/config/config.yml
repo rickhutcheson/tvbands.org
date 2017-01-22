@@ -32,16 +32,21 @@ homepage_template: index.twig
 notfound: notfound.twig
 record_template: record.twig
 listing_template: listing.twig
-listing_records: 6
+listing_records: 1000
 listing_sort: datepublish DESC
 
 #
-# Search & Sort
+# Search & Listing
 #
+
 taxonomy_sort: DESC
 search_results_template: search.twig
 search_results_records: 10
 recordsperpage: 10
+
+#
+# Javascript
+#
 
 add_jquery: false
 
@@ -72,8 +77,6 @@ thumbnails:
     allow_upscale: false
     exif_orientation: true
     only_aliases: false
-#    browser_cache_time: 2592000
-
 
 #
 # HTML Sanitization
@@ -94,16 +97,16 @@ branding:
      path: /admin
      provided_by: [ rick@oddlyaccurate.com, "Rick Hutcheson." ]
 
+
+#
+# Debug Mode
+#
+
 debug: false
 debug_show_loggedoff: false
 debug_permission_audit_mode: false
 debug_error_level: -1               # equivalent to E_ALL
 debug_error_use_symfony: false
-
-#
-# System debug logging
-#
-
 debuglog:
     enabled: false
     filename: bolt-debug.log
@@ -115,12 +118,12 @@ debuglog:
 #
 
 wysiwyg:
-    images: false            # Allow users to insert images in the content.
+    images: true           # Allow users to insert images in the content.
     anchor: true            # Adds a button to create internal anchors to link to.
     tables: false            # Adds a button to insert and modify tables in the content.
     fontcolor: false         # Allow users to mess around with font coloring.
     align: false             # Adds buttons for 'align left', 'align right', etc.
-    subsuper: false          # Adds buttons for subscript and superscript, using `<sub>` and `<sup>`.
+    subsuper: true          # Adds buttons for subscript and superscript, using `<sub>` and `<sup>`.
     embed: false             # Allows the user to insert embedded video's from Youtube, Vimeo, etc.
     underline: false         # Adds a button to underline text, using the `<u>`-tag.
     ruler: false             # Adds a button to add a horizontal ruler, using the `<hr>`-tag.
