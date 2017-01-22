@@ -133,7 +133,8 @@ dev-post-release:
 prod-post-release:
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut cache:clear
-	killall php56.cgi  # Force FastCGI to reload files
+	@echo('Killing existing FastCGI processes.')
+	killall php56.cgi
 
 .PHONY: post-release
 post-release: $(ENV)-post-release
