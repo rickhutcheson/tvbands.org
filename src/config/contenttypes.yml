@@ -136,7 +136,7 @@ news:
         group: content
     slug:
         type: slug
-        uses: [title, date]
+        uses: [date, title]
   relations:
     ensembles:
       multiple: true
