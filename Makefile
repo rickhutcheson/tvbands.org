@@ -115,29 +115,30 @@ dev-server:
 	cp src/config/config_dev.yml src/config/config_local.yml
 	php -S localhost:8000 -t $(SRV_DIR)/public/ $(SRV_DIR)/public/dev_server.php
 
-.PHONY: dev-pre-setup
-dev-pre-setup:
+.PHONY: dev-pre-release
+dev-pre-release:
 
-.PHONY: prod-pre-setup
-prod-pre-setup:
+.PHONY: prod-pre-release
+prod-pre-release:
+	git pull
 	cp database/bolt.db database/backup-$(NOW).db
 
-.PHONY: pre-setup
-pre-setup: $(ENV)-pre-setup
+.PHONY: pre-release
+pre-release: $(ENV)-pre-release
 
-.PHONY: dev-post-setup
-dev-post-setup:
+.PHONY: dev-post-release
+dev-post-release:
 
-.PHONY: prod-post-setup
-prod-post-setup:
+.PHONY: prod-post-release
+prod-post-release:
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut cache:clear
 
-.PHONY: post-setup
-post-setup: $(ENV)-post-setup
+.PHONY: post-release
+post-release: $(ENV)-post-release
 
 .PHONY: release
-release: pre-setup app-setup post-setup
+release: pre-release app-setup post-release
 
 setup/bin/composer.phar:
 	@echo "Installing composer..."
