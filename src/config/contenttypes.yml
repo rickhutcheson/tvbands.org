@@ -84,6 +84,7 @@ events:
     description: "Events such as contests, football games, or booster meetings. If you want to provide a map to the event, then add an 'Event Location' in the 'Relationships' tab."
     default_status: published
     sort: -date
+    listing_sort: -date
     fields:
         name:
             type: text
@@ -124,6 +125,7 @@ news:
   record_template: news_item.twig
   description: "Announcements or information that isn't specific to an event. If you connect the announcement to an ensemble (or multiple ensembles) then it will also display on the ensemble page. Examples: 'Congratulations to the Tri-Valley Marching Band!', 'Thanks to Uniform Sponsers', etc."
   default_status: published
+  listing_sort: -date
   fields:
     title:
         type: text
