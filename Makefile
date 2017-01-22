@@ -133,7 +133,7 @@ dev-post-release:
 prod-post-release:
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut cache:clear
-	@echo('Killing existing FastCGI processes.')
+	@echo 'Killing existing FastCGI processes.'
 	killall php56.cgi
 
 .PHONY: post-release

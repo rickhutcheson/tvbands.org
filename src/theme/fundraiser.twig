@@ -9,6 +9,6 @@
     <hr>
     <h5>Documents</h5>
     {% for a in fundraiser.attachments %}
-        <h6><a href="{{ asset(a, 'files') }}">{{  a }}</a></h6>
+        <h6><a href="{{ asset(a.filename, 'files') }}">{{ a.title }}</a></h6>
     {% endfor %}
 {% endblock %}
