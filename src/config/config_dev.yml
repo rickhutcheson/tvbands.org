@@ -1,2 +1,16 @@
 canonical: localhost
 cookies_domain: .localhost
+
+#
+# Debug Mode
+#
+
+debug: true
+debug_show_loggedoff: true
+debug_permission_audit_mode: false
+debug_error_level: -1               # equivalent to E_ALL
+debug_error_use_symfony: false
+debuglog:
+    enabled: false
+    filename: bolt-debug.log
+    level: DEBUG
