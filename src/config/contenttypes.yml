@@ -169,12 +169,11 @@ fundraisers:
     dates:
       type: repeater
       label: 'Fundraiser Date'
-      prefix: 'Please add the dates / times of the fundraiser. Leave time at 12:00 AM to ignore.'
+      prefix: 'Please add the dates of the fundraiser.'
       fields:
-        datetime:
-          type: datetime
-          label: 'Date & Time'
-          required: true
+          date:
+              type: date
+              required: true
     promotion_start_date:
         label: 'Start Promoting On'
         postfix: 'First day to list this fundraiser under "Current Fundraisers".'

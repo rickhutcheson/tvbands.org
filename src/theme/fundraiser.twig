@@ -1,0 +1,14 @@
+{% extends 'partials/_base.twig' %}
+{% block content %}
+    <h2>{{ fundraiser.title }}</h2>
+    {% for d in fundraiser.dates %}
+        <h5>{{ d.date|localedatetime('%A, %B %e, %Y')}}</h5>
+    {% endfor %}
+    <hr>
+    {{ fundraiser.description }}
+    <hr>
+    <h5>Documents</h5>
+    {% for a in fundraiser.attachments %}
+        <h6><a href="{{ asset(a, 'files') }}">{{  a }}</a></h6>
+    {% endfor %}
+{% endblock %}
