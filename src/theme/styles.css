@@ -5,7 +5,8 @@ html {
 body {
     background: #fafafa;
     color: #222;
-    font-family: 'Open Sans';
+    font-family: 'Cabin';
+    font-weight: 400;
 }
 
 .header-strip {
@@ -32,10 +33,10 @@ body {
 
 .logo {
     background-size: contain;
-    font-family: "Freeland";
     font-size: 2.5rem;
     letter-spacing: -0.2rem;
     margin-bottom: -1rem;
+    margin-left: -10px; /* cancel out most of wrapping container's margin */
     width: 100%;
     z-index: 20;  /* must be higher than menu-wrapper */
 }
@@ -56,7 +57,7 @@ body {
 .menu {
     display: flex;
     flex-direction: column;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 300;
     justify-content: space-between;
     list-style: none;
@@ -123,15 +124,16 @@ body {
 }
 
 .sidebar__section-body {
-    font-size: 0.75rem;
+    font-size: 0.80rem;
 }
 
 .section__entry {
-    align-items: center;
+    align-items: left;
     border-top: solid 1px rgba(34, 34, 34, 0.15);
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    padding: 0.25rem 0;
+    padding: 0.55rem 0;
 }
 
 .section__entry:last-child {
@@ -182,12 +184,11 @@ body {
     }
     .menu {
         flex-direction: row;
-        padding-top: 1em;
+        font-size: 0.95rem;
+        letter-spacing: -0.5px;
+        padding-top: 1.5rem;  /* TODO: This should really be on parent elements */
     }
     .menu__item {
-        font-size: 0.8rem;
-        font-weight: 400;
-        letter-spacing: -0.5px;
         margin: 0;
         padding: 0;
     }
@@ -196,6 +197,11 @@ body {
     }
     .sidebar {
         margin-top: 0;
+    }
+    .section__entry {
+        align-items: center;
+        flex-direction: row;
+        padding: 0.35rem 0;
     }
 }
 
