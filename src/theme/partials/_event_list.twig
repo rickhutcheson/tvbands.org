@@ -12,7 +12,7 @@
                             {{ event.name }}
                         </a>
                     {% else %}
-                        <a class="section__entry-link" href="{{ event.itinerary }}">
+                        <a class="section__entry-link" href="{{ asset(event.itinerary, 'files') }}">
                             {{ event.name }}
                         </a>
                     {% endif %}

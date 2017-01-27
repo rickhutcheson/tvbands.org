@@ -50,6 +50,10 @@ endif
 db-update:
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
 
+.PHONY:	backup-prod-db
+backup-prod-db:
+	scp tv:~/tvbands.org/database/bolt.db srv/app/database/bolt.db
+
 .PHONY: dev-srv-setup
 dev-srv-setup: base-srv-setup
 	mkdir -p $(SRV_DIR)/app/database
