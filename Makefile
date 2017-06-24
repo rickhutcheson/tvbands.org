@@ -29,6 +29,38 @@ SRV_DIR = $(BASE_DIR)/srv
 
 
 ########################################################################
+# Output coloring
+#
+# Minimal pretty-printing so output is clearer
+########################################################################
+BLACK=0
+RED=1
+GREEN=2
+YELLOW=3
+BLUE=4
+MAGENTA=5
+CYAN=6
+
+define colorecho
+    @tput setaf $(1)
+    @echo $(2)
+    @tput sgr0
+endef
+
+define proclaim
+    @echo
+    @echo
+    $(call colorecho, ${GREEN}, "╔══════════════════════════════════════════════════════════════════════")
+    $(call colorecho, ${GREEN}, "║")
+    $(call colorecho, ${GREEN}, "║ $(1)")
+    $(call colorecho, ${GREEN}, "║")
+    $(call colorecho, ${GREEN}, "╚══════════════════════════════════════════════════════════════════════")
+    @echo
+    @echo
+endef
+
+
+########################################################################
 # Runtime Checks
 #
 # Ideally, these checks would be the first code in the file, but
@@ -72,7 +104,7 @@ prod-srv-setup: base-srv-setup
 
 .PHONY: base-srv-setup
 base-srv-setup:
-	@echo "Setting up server directory..."
+	$(call colorecho, ${CYAN}, "Setting up server directory...")
 	mkdir -p $(SRV_DIR)
 	mkdir -p $(SRV_DIR)/app/cache
 	mkdir -p $(SRV_DIR)/app/config
@@ -85,7 +117,7 @@ base-srv-setup:
 
 .PHONY: base-app-setup
 base-app-setup: setup/bin/composer.phar $(ENV)-srv-setup
-	@echo "Installing Bolt CMS..."
+	$(call proclaim, "Installing Bolt CMS...")
 	cd $(SRV_DIR) \
 		&& ${CURDIR}/setup/bin/composer.phar install --no-scripts \
 		&& ${CURDIR}/setup/bin/composer.phar run-script post-release-cmd
@@ -124,6 +156,8 @@ dev-pre-release:
 
 .PHONY: prod-pre-release
 prod-pre-release:
+	$(call proclaim, "Beginning Release @ ${NOW}")
+	$(call colorecho, ${GREEN}, "Installing composer...")
 	git pull
 	cp database/bolt.db database/backup-$(NOW).db
 
@@ -137,8 +171,9 @@ dev-post-release:
 prod-post-release:
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut cache:clear
-	@echo 'Killing existing FastCGI processes.'
-	killall php56.cgi
+	$(call colorecho, ${GREEN}, 'Killing existing FastCGI processes...')
+	killall -q php56.cgi
+	$(call proclaim, 'Release ${NOW} complete.')
 
 .PHONY: post-release
 post-release: $(ENV)-post-release
@@ -147,7 +182,7 @@ post-release: $(ENV)-post-release
 release: pre-release app-setup post-release
 
 setup/bin/composer.phar:
-	@echo "Installing composer..."
+	$(call colorecho, ${GREEN}, "Installing composer...")
 	./src/setup/make_composer.sh
 	mkdir -p setup/bin
 	mv composer.phar setup/bin
