@@ -1,8 +1,8 @@
-################################################################################
+########################################################################
 #
 # Makefile: tvbands.org build/deployment process
 #
-################################################################################
+########################################################################
 
 
 ########################################################################
@@ -76,6 +76,12 @@ endif
 ########################################################################
 # Targets
 ########################################################################
+.DEFAULT_GOAL := help
+
+# From: https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+help:
+	@echo "tvbands.org build / setup / development tooling"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: pkg-update
 pkg-update:
@@ -84,21 +90,29 @@ pkg-update:
 	&& php ${CURDIR}/setup/bin/composer.phar update
 
 .PHONY:	db-update
-db-update:
+db-update:  ## Update Bolt database to use latest configurations
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
 
-.PHONY:	backup-prod-db
-backup-prod-db:
-	scp tv:~/tvbands.org/database/bolt.db srv/app/database/bolt.db
+.PHONY:	backup-prod
+backup-prod:  ## Copy all production data into development environment
+	$(call colorecho, ${RED}, "Backing up production data...")
+	scp -p tv:~/tvbands.org/database/bolt.db $(SRV_DIR)/app/database/bolt.db
+	scp -rp tv:~/tvbands.org/files/. $(SRV_DIR)/public/files/
+
+
+.PHONY: dev-init
+dev-init: dev-srv-setup dev-app-setup backup-prod  ## Create or reset development environment
 
 .PHONY: dev-srv-setup
-dev-srv-setup: base-srv-setup
+dev-srv-setup: dev-pkg-reset base-srv-setup
 	mkdir -p $(SRV_DIR)/app/database
 	mkdir -p $(SRV_DIR)/public/files
 
 	cd $(SRV_DIR) \
+	&& rm -f composer.json composer.lock \
 	&& ln -s ../src/setup/composer.json composer.json \
 	&& ln -s ../src/setup/composer.lock composer.lock
+
 
 .PHONY: prod-srv-setup
 prod-srv-setup: base-srv-setup
@@ -106,6 +120,7 @@ prod-srv-setup: base-srv-setup
 	cp src/setup/composer.lock $(SRV_DIR)/
 	cd $(SRV_DIR)/app && ln -s ../../../../database	database
 	cd $(SRV_DIR)/public && ln -s ../../../../files files
+
 
 .PHONY: base-srv-setup
 base-srv-setup:
@@ -122,7 +137,15 @@ base-srv-setup:
 
 .PHONY: base-app-setup
 base-app-setup: setup/bin/composer.phar $(ENV)-srv-setup
-	$(call proclaim, "Installing Bolt CMS...")
+	$(call proclaim, "Installing Application...")
+
+	$(call colorecho, ${CYAN}, "Resetting & clearing packages...")
+	- cd $(SRV_DIR) \
+		&& ${CURDIR}/setup/bin/composer.phar selfupdate \
+		&& ${CURDIR}/setup/bin/composer.phar clearcache \
+		&& rm -rf vendor
+
+	$(call colorecho, ${CYAN} "Installing Bolt CMS...")
 	cd $(SRV_DIR) \
 		&& ${CURDIR}/setup/bin/composer.phar install --no-scripts \
 		&& ${CURDIR}/setup/bin/composer.phar run-script post-release-cmd
@@ -152,7 +175,7 @@ app-setup: $(ENV)-app-setup
 
 
 .PHONY: dev-server
-dev-server:
+dev-server:  ## Start a dev server
 	cp src/config/config_dev.yml src/config/config_local.yml
 	php -S localhost:8000 -t $(SRV_DIR)/public/ $(SRV_DIR)/public/dev_server.php
 
@@ -176,15 +199,15 @@ dev-post-release:
 prod-post-release:
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
 	php $(SRV_DIR)/vendor/bolt/bolt/app/nut cache:clear
-	$(call colorecho, ${GREEN}, 'Killing existing FastCGI processes...')
+	$(call colorecho, ${GREEN}, "Killing existing FastCGI processes...")
 	killall -q php56.cgi
-	$(call proclaim, 'Release ${NOW} complete.')
+	$(call proclaim, "Release ${NOW} complete.")
 
 .PHONY: post-release
 post-release: $(ENV)-post-release
 
 .PHONY: release
-release: pre-release app-setup post-release
+release: pre-release app-setup post-release  ## Release code into production server (does nothing in DEV)
 
 setup/bin/composer.phar:
 	$(call colorecho, ${GREEN}, "Installing composer...")

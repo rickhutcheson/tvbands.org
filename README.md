@@ -9,6 +9,13 @@ Prerequisites
     * Add of [Bolt's requirements][bolt-req]
     * Running "phar" files (The "phar" extension must be enabled or able to be configured)
 
+
+Getting Started
+---------------
+
+Run `make` in the repository for help; `make dev-init` is a good starting point.
+
+
 Release Process
 ===============
 
