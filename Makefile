@@ -77,6 +77,11 @@ endif
 # Targets
 ########################################################################
 
+.PHONY: pkg-update
+pkg-update:
+	$(call colorecho, ${CYAN}, "Updating composer packages to latest compatible versions...")
+	cd ${SRV_DIR} \
+	&& php ${CURDIR}/setup/bin/composer.phar update
 
 .PHONY:	db-update
 db-update:
