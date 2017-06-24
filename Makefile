@@ -104,7 +104,7 @@ backup-prod:  ## Copy all production data into development environment
 dev-init: dev-srv-setup dev-app-setup backup-prod  ## Create or reset development environment
 
 .PHONY: dev-srv-setup
-dev-srv-setup: dev-pkg-reset base-srv-setup
+dev-srv-setup: base-srv-setup
 	mkdir -p $(SRV_DIR)/app/database
 	mkdir -p $(SRV_DIR)/public/files
 
