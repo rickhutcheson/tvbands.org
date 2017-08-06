@@ -156,3 +156,9 @@ hash_strength: 12
 backend:
    news:
        disable: true
+
+#
+# Compatibility: Remove after bolt v.3.4
+#
+compatibility:
+    template_view: true

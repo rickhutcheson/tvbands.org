@@ -5,7 +5,7 @@
     "license": "GPL-3.0",
     "require": {
         "php": "^5.5.9 || ^7.0",
-        "bolt/bolt": "^3.2",
+        "bolt/bolt": "^3.3",
         "PasswordLib/PasswordLib": "^1.0@beta"
     },
     "minimum-stability": "beta",
