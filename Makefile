@@ -178,7 +178,6 @@ app-setup: $(ENV)-app-setup
 dev-server:  ## Start a dev server
 	cp src/config/config_dev.yml src/config/config_local.yml
 	php -S localhost:8000 \
-		-c $(BASE_DIR)/src/setup/php.ini \
 		-t $(SRV_DIR)/public/ \
 		$(SRV_DIR)/public/dev_server.php
 
