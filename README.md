@@ -28,12 +28,13 @@ Dreamhost Setup
         # Inside /home/<username>/.bash_profile
         export PATH=/usr/local/php56/bin:$PATH
 
-2. The "phar" extension must be enabled in
-   your `phprc` file.
+2. The `phprc` file (`/home/<username>/.php/<version>/phprc`) must be updated from
+   the `src/setup/php.ini` file
 
         # Inside /home/<username>/.php/<version>/phprc
-        extension = phar.so
-        suhosin.executor.include.whitelist = phar
+        <contents of src/setup/php.ini>
+
+
 
 
 Environment
