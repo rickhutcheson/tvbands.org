@@ -45,6 +45,8 @@ Environment
 Work to Do
 ==========
 
+* Setup a separate php.ini for dev-server; timezone must be set
+
 Release Process
 ---------------
 
