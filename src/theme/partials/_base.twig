@@ -1,58 +1,61 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!doctype html>
 <html lang="en">
-    <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Tri-Valley Bands</title>
-	<link href="{{ asset('css/bootstrap.min.css', 'theme') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('styles.css', 'theme') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('css/font-awesome.min.css', 'theme') }}" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500,600,700" rel="stylesheet">
 
-        <link rel="icon" type="image/png" href="{{ asset('images/favicon.png', 'theme') }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tri-Valley Bands</title>
+    <link href="{{ asset('css/bootstrap.min.css', 'theme') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('styles.css', 'theme') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/font-awesome.min.css', 'theme') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500,600,700" rel="stylesheet">
 
-        <!--[if lt IE 9]>
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png', 'theme') }}">
+
+    <!--[if lt IE 9]>
 	    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-    </head>
-    <body>
-	<!-- container -->
-	<!-- header-wrapper -->
+</head>
 
-        {{ include('partials/_header_strip.twig') }}
-	<div class="content-wrapper">
-	    <div class="container">
-		<div class="row">
-		    <div class="col-xs-12 col-lg-9">
-			<div class="content">
-                            {% block content %}{% endblock %}
-			</div>
-		    </div>
-                    <div class="col-xs-12 col-lg-3">
-                        <div class="sidebar">
-                            <div class="sidebar__section">
-                                <h3 class="sidebar__section-header">About the Band</h3>
-                                <p class="sidebar__section-body">
-                                    This site is devoted entirely to Tri-Valley's variety of bands and the talented members that play in each one. No matter what your style of music you'll find that Tri-Valley has a band to fit everyone's interests. The members of these bands work very hard to bring together the songs that are played at the contest, games and other activities. If it weren't for these active and devoted members our events would not be nearly as enjoyable as they are! Tri-Valley thanks the participation of these budding musicians.
-                                </p>
-                            </div>
+<body>
+    <!-- container -->
+    <!-- header-wrapper -->
+
+    {{ include('partials/_header_strip.twig') }}
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-lg-9">
+                    <div class="content">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-3">
+                    <div class="sidebar">
+                        <div class="sidebar__section">
+                            <h3 class="sidebar__section-header">About the Band</h3>
+                            <p class="sidebar__section-body">
+                                This site is devoted entirely to Tri-Valley's variety of bands and the talented members that play in each one. No matter what your style of music you'll find that Tri-Valley has a band to fit everyone's interests. The members of these bands work very hard to bring together the songs that are played at the contest, games and other activities. If it weren't for these active and devoted members our events would not be nearly as enjoyable as they are! Tri-Valley thanks the participation of these budding musicians.
+                            </p>
                         </div>
                     </div>
-		</div>
-	    </div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<!-- Dependencies for Bootstrap's js plugins -->
-	<script src="{{ asset('js/jquery/jquery.min.js', 'theme') }}"></script>
-        <script src="{{ asset('js/tether/tether.min.js', 'theme') }}"></script>
-	<script src="{{ asset('js/bootstrap.min.js', 'theme') }}"></script>
+    <!-- Dependencies for Bootstrap's js plugins -->
+    <script src="{{ asset('js/jquery/jquery.min.js', 'theme') }}"></script>
+    <script src="{{ asset('js/tether/tether.min.js', 'theme') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js', 'theme') }}"></script>
 
-	<script type="text/javascript">
-	 $('#menu-icon').on('click', function() {
-	     $('#top-menu').slideToggle(300);
-	 });
-	</script>
-    </body>
+    <script type="text/javascript">
+        $('#menu-icon').on('click', function() {
+            $('#top-menu').slideToggle(300);
+        });
+    </script>
+</body>
+
 </html>
