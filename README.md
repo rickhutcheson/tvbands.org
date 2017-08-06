@@ -6,7 +6,7 @@ Prerequisites
 
 * Any *nix-like system (for running Makefiles)
 * PHP installation satisfying:
-    * Add of [Bolt's requirements][bolt-req]
+    * All of [Bolt's requirements][bolt-req]
     * Running "phar" files (The "phar" extension must be enabled or able to be configured)
 
 
