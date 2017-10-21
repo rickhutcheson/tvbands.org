@@ -7,12 +7,11 @@
 
 ########################################################################
 # Variable Setup & Configuration
-#
+########################################################################
+
 # Releases on server are named (and stored) by timestamp, so we
 # calculate NOW once at the beginning so that we have consistent
 # directory names during execution.
-########################################################################
-
 NOW := $(shell date +%m-%d-%y+%H.%M.%S)
 
 # Variable: BASE_DIR
@@ -26,6 +25,9 @@ ifeq ($(ENV), prod)
 endif
 
 SRV_DIR = $(BASE_DIR)/srv
+
+# We need to use our custom php.ini file for all commands
+PHP_CMD := php -c $(BASE_DIR)/src/setup/php.ini
 
 
 ########################################################################
@@ -84,14 +86,14 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: pkg-update
-pkg-update:
+pkg-update:  ## Update all packages to use compatible versions from composer.json
 	$(call colorecho, ${CYAN}, "Updating composer packages to latest compatible versions...")
 	cd ${SRV_DIR} \
-	&& php ${CURDIR}/setup/bin/composer.phar update
+	&& $(PHP_CMD) ${CURDIR}/setup/bin/composer.phar update
 
 .PHONY:	db-update
 db-update:  ## Update Bolt database to use latest configurations
-	php $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
+	$(PHP_CMD) $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
 
 .PHONY:	backup-prod
 backup-prod:  ## Copy all production data into development environment
@@ -177,7 +179,7 @@ app-setup: $(ENV)-app-setup
 .PHONY: dev-server
 dev-server:  ## Start a dev server
 	cp src/config/config_dev.yml src/config/config_local.yml
-	php -S localhost:8000 \
+	$(PHP_CMD) -S localhost:8000 \
 		-t $(SRV_DIR)/public/ \
 		$(SRV_DIR)/public/dev_server.php
 
@@ -199,8 +201,8 @@ dev-post-release:
 
 .PHONY: prod-post-release
 prod-post-release:
-	php $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
-	php $(SRV_DIR)/vendor/bolt/bolt/app/nut cache:clear
+	$(PHP_CMD) $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
+	$(PHP_CMD) $(SRV_DIR)/vendor/bolt/bolt/app/nut cache:clear
 	$(call colorecho, ${GREEN}, "Killing existing FastCGI processes...")
 	killall -q php56.cgi
 	$(call proclaim, "Release ${NOW} complete.")

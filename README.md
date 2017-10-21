@@ -1,3 +1,4 @@
+
 Development Process
 ===================
 
@@ -7,7 +8,11 @@ Prerequisites
 * Any *nix-like system (for running Makefiles)
 * PHP installation satisfying:
     * All of [Bolt's requirements][bolt-req]
-    * Running "phar" files (The "phar" extension must be enabled or able to be configured)
+    * The `curl` extension
+    * The `exif` extension
+    * The `zip` extension
+    * The `openssl` extension
+    * Running "phar" files (The `phar` extension must be enabled or able to be configured)
 
 
 Getting Started
@@ -23,10 +28,10 @@ Dreamhost Setup
 ---------------
 
 1. Your PHP CLI must use the same version as the website. Update your
-   .bash_profile to include the following lines. (Assuming PHP 5.6)
+   .bash_profile to include the following lines. (Assuming PHP 7.1)
 
         # Inside /home/<username>/.bash_profile
-        export PATH=/usr/local/php56/bin:$PATH
+        export PATH=/usr/local/php71/bin:$PATH
 
 2. The `phprc` file (`/home/<username>/.php/<version>/phprc`) must be updated from
    the `src/setup/php.ini` file
@@ -56,5 +61,5 @@ Release Process
 
 
 
-[bolt-req]: https://docs.bolt.cm/3.2/getting-started/requirements
+[bolt-req]: https://docs.bolt.cm/3.3/getting-started/requirements
 [so-relpath]: http://stackoverflow.com/a/12498485
