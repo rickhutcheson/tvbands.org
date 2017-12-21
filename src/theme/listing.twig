@@ -4,6 +4,17 @@
     {% for record in records %}
         <article>
             <h2><a href="{{ record.link }}">{{ record.title }}</a></h2>
+
+            {% if record.date %}
+                <h5>
+                    {{ record.date|localedatetime("%B %e, %Y") }}
+                </h5>
+            {% elseif record.promotion_start_date %}
+                <h5>
+                    {{ record.promotion_start_date|localedatetime("%B %e, %Y") }} &mdash; {{ record.promotion_end_date|localedatetime("%B %e, %Y") }}
+                </h5>
+            {% endif %}
+
             {# display something introduction-like.. #}
             {% if record.introduction %}
                 {{ record.introduction }}
