@@ -27,7 +27,7 @@ endif
 SRV_DIR = $(BASE_DIR)/srv
 
 # We need to use our custom php.ini file for all commands
-PHP_INI_FILE := php.$(shell echo $(ENV) | tr A-Z a-z).ini
+PHP_INI_FILE := php.$(ENV).ini
 PHP_CMD := php -c $(BASE_DIR)/src/setup/$(PHP_INI_FILE)
 
 
