@@ -189,9 +189,11 @@ dev-pre-release:
 .PHONY: prod-pre-release
 prod-pre-release:
 	$(call proclaim, "Beginning Release @ ${NOW}")
-	$(call colorecho, ${GREEN}, "Installing composer...")
-	git pull
+	$(call colorecho, ${GREEN}, "Backing up database to 'backup-${NOW}.db'...")
 	cp database/bolt.db database/backup-$(NOW).db
+	$(call colorecho, ${GREEN}, "Pulling latest copy of code...")
+	git reset --hard HEAD
+	git pull
 
 .PHONY: pre-release
 pre-release: $(ENV)-pre-release
