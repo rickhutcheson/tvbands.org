@@ -207,7 +207,7 @@ prod-post-release:
 	$(PHP_CMD) $(SRV_DIR)/vendor/bolt/bolt/app/nut database:update
 	$(PHP_CMD) $(SRV_DIR)/vendor/bolt/bolt/app/nut cache:clear
 	$(call colorecho, ${GREEN}, "Killing existing FastCGI processes...")
-	killall -q php56.cgi
+	killall -q php73.cgi
 	$(call proclaim, "Release ${NOW} complete.")
 
 .PHONY: post-release

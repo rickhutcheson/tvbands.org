@@ -1,12 +1,11 @@
 {
-    "name": "tvbands.org",
+    "name": "tvbands/tvbands-dot-org",
     "description": "Bolt installation / customizations for tvbands.org",
     "type": "project",
     "license": "GPL-3.0",
     "require": {
-        "php": "^7.0",
-        "bolt/bolt": "^3.4",
-        "PasswordLib/PasswordLib": "^1.0@beta"
+        "php": "^7.3",
+        "bolt/bolt": "^3.6"
     },
     "minimum-stability": "beta",
     "prefer-stable": true,

@@ -10,6 +10,7 @@ Prerequisites
     * All of [Bolt's requirements][bolt-req]
     * The `curl` extension
     * The `exif` extension
+    * The `iconv` extension
     * The `zip` extension
     * The `openssl` extension
     * Running "phar" files (The `phar` extension must be enabled or able to be configured)
@@ -28,13 +29,13 @@ Dreamhost Setup
 ---------------
 
 1. Your PHP CLI must use the same version as the website. Update your
-   .bash_profile to include the following lines. (Assuming PHP 7.1)
+   .bash_profile to include the following lines. (Assuming PHP 7.3)
 
         # Inside /home/<username>/.bash_profile
-        export PATH=/usr/local/php71/bin:$PATH
+        export PATH=/usr/local/php73/bin:$PATH
 
 2. The `phprc` file (`/home/<username>/.php/<version>/phprc`) must be updated from
-   the `src/setup/php.ini` file
+   the `src/setup/php.prod.ini` file
 
         # Inside /home/<username>/.php/<version>/phprc
         <contents of src/setup/php.ini>
@@ -61,5 +62,5 @@ Release Process
 
 
 
-[bolt-req]: https://docs.bolt.cm/3.3/getting-started/requirements
+[bolt-req]: https://docs.bolt.cm/3.6/getting-started/requirements
 [so-relpath]: http://stackoverflow.com/a/12498485

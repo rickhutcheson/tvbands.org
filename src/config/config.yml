@@ -149,7 +149,7 @@ cookies_use_remoteaddr: true
 cookies_use_browseragent: false
 cookies_use_httphost: true
 cookies_lifetime: 1209600
-cookies_domain: .tvbands.org
+cookies_domain: tvbands.org
 
 hash_strength: 12
 

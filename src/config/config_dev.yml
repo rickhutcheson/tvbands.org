@@ -1,5 +1,5 @@
 canonical: localhost
-cookies_domain: .localhost
+cookies_domain: localhost
 
 #
 # Debug Mode

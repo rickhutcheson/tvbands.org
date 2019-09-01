@@ -21,7 +21,7 @@
             {% elseif record.short_description %}
                 {{ record.short_description }}
             {% else %}
-                <p>{{ record.excerpt(300, false, search|default('')) }}</p>
+                <p>{{ (record.description ~ record.body)|excerpt(200)}}</p>
             {% endif %}
         </article>
         {% if not loop.last %}
