@@ -42,25 +42,25 @@ Dreamhost Setup
 
 
 
-
 Environment
 -----------
 
 * After cloning repository, directories `database` and `files` should be added.
+* The simplest way to do this is to use `make init-dev`
 
 Work to Do
 ==========
 
-* Setup a separate php.ini for dev-server; timezone must be set
+* Setup a separate php.ini for dev-server; timezone must be set.
 
 Release Process
 ---------------
 
 * Need way to backup `files/` directory remotely.
-* Should use `relpath` instead of hardcodeded relative paths for symbolic links.
+* Should use `relpath` instead of hardcoded relative paths for symbolic links.
   See [this SO post for relpath implementation][so-relpath].
 
 
 
-[bolt-req]: https://docs.bolt.cm/3.6/getting-started/requirements
+[bolt-req]: https://docs.bolt.cm/3.7/getting-started/requirements
 [so-relpath]: http://stackoverflow.com/a/12498485

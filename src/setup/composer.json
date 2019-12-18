@@ -5,7 +5,7 @@
     "license": "GPL-3.0",
     "require": {
         "php": "^7.3",
-        "bolt/bolt": "^3.6"
+        "bolt/bolt": "^3.7"
     },
     "minimum-stability": "beta",
     "prefer-stable": true,
